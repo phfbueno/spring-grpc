@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_package = "com.github.phfbueno";
+option  java_multiple_files = true;
+
+package com.gitgub.phfbueno;
+
+service  ProductService {
+  rpc Create(ProductRequest) returns (ProductResponse);
+  rpc FindById(FindByIdRequest) returns (ProductResponse);
+  rpc DeleteById(FindByIdRequest) returns (ProductResponse);
+  rpc FindAll(EmptyIdRequest) returns (ProductResponseList);
+}
+
+message FindByIdRequest {
+  int64 id = 1;
+}
+
+message EmptyIdRequest {
+
+}
+
+message ProductResponseList {
+  repeated ProductResponse products = 1;
+}
+message ProductRequest {
+  string name = 1;
+  double price = 2;
+  int32 quantityStock = 3; 
+}
+
+message  ProductResponse {
+  int64 id = 1;
+  string name = 2;
+  double price = 3;
+  int32 quantityStock = 4;
+}
+
+
